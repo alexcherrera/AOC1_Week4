@@ -12,9 +12,12 @@
 {
 //Variables:
 	UILabel * userNameLabel;
+	UILabel * pleaseEnterUserName;
 	UITextField * userNameTextField;
 	UIButton * logInBtn;
+	UITextField * loginTextVal;
+	
 }
 //Functions:
-
+-(void)clickByUser:(UIButton*)btnActions;
 @end
