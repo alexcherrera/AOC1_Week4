@@ -13,11 +13,19 @@
 //Variables:
 	UILabel * userNameLabel;
 	UILabel * pleaseEnterUserName;
+	UILabel * userText;
+	UILabel * labeDateUI;
+	NSString * userNameTitle;
+	NSString * usernameText;
+	NSString * textString;
 	UITextField * userNameTextField;
 	UIButton * logInBtn;
+	UIButton * showDateBtn;
 	UITextField * loginTextVal;
+	NSDate * dateShow;
+	NSDateFormatter * formatDate;
 	
 }
 //Functions:
--(void)clickByUser:(UIButton*)btnActions;
+-(void)clickByUser;
 @end
