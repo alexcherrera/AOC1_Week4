@@ -21,11 +21,14 @@
 	UITextField * userNameTextField;
 	UIButton * logInBtn;
 	UIButton * showDateBtn;
+	UIButton * infoButton;
 	UITextField * loginTextVal;
 	NSDate * dateShow;
 	NSDateFormatter * formatDate;
 	UIAlertView * dateAlert;
 	NSString * labelDateString;
+	UILabel * infoLabel;
+	NSString * stringInfoLabel;
 }
 //Functions:
 -(void)clickByUser:(UIButton*)buttonInfo;

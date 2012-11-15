@@ -11,6 +11,7 @@
 
 #define BUTTON_VALUE_ZERO 0
 #define BUTTON_VALUE_ONE 1
+#define BUTTON_VALUE_TWO 2
 
 @interface ViewController ()
 
@@ -72,6 +73,15 @@
 		[showDateBtn addTarget:self action:@selector(clickByUser:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:showDateBtn];
 	}
+//Information button section:
+	infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+	if (infoButton != nil)
+	{
+		infoButton.frame = CGRectMake(10.0f, 320.0f, 25.0f, 25.0f);
+		infoButton.tag = BUTTON_VALUE_TWO;
+		[infoButton addTarget:self action:@selector(clickByUser:) forControlEvents:UIControlEventTouchUpInside];
+		[self.view addSubview:infoButton];
+	}
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -108,9 +118,22 @@
 				labelDateString= [formatDate stringFromDate:dateShow];
 				if (labelDateString != nil)
 				{
-					dateAlert = [[UIAlertView alloc]initWithTitle:@"Date" message:labelDateString delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+					dateAlert = [[UIAlertView alloc]initWithTitle:@"Date" message:labelDateString delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 					[dateAlert show];
 				}
+			}
+			break;
+		}
+		case BUTTON_VALUE_TWO:
+		{
+			infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0f, 350.0f, 360.0f, 50.0f)];
+			if (infoLabel != nil)
+			{
+				infoLabel.text = @"This application was created by Alexander Herrera.";
+				infoLabel.numberOfLines = 2;
+				infoLabel.textColor = [UIColor blueColor];
+				infoLabel.backgroundColor = [UIColor grayColor];
+				[self.view addSubview:infoLabel];
 			}
 			break;
 		}
