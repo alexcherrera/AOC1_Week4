@@ -14,7 +14,7 @@
 	UILabel * userNameLabel;
 	UILabel * pleaseEnterUserName;
 	UILabel * userText;
-	UILabel * labeDateUI;
+	UILabel * labelDateUI;
 	NSString * userNameTitle;
 	NSString * usernameText;
 	NSString * textString;
@@ -24,9 +24,9 @@
 	UITextField * loginTextVal;
 	NSDate * dateShow;
 	NSDateFormatter * formatDate;
-	
+	UIAlertView * dateAlert;
+	NSString * labelDateString;
 }
 //Functions:
--(void)clickByUser;
--(void)displayAlert:info1 displayAlert:info2;
+-(void)clickByUser:(UIButton*)buttonInfo;
 @end

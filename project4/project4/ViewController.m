@@ -18,7 +18,7 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
 //Set background color of the page:
 	self.view.backgroundColor = [UIColor whiteColor];
@@ -28,8 +28,9 @@
 	{
 		userNameLabel.text = @"Username:";
 		//userNameLabel.backgroundColor = [UIColor greenColor];
+		[self.view addSubview:userNameLabel];
 	}
-	[self.view addSubview:userNameLabel];
+	
 //UILabel Reminder for the user to input a username:
 	pleaseEnterUserName = [[UILabel alloc]initWithFrame:CGRectMake(0.0f, 100.0f, 320.0f, 80.0f)];
 	userText = [[UILabel alloc]initWithFrame:CGRectMake(0.0f, 100.0f, 20.0f, 80.0f)];
@@ -58,7 +59,7 @@
 		logInBtn.frame = CGRectMake(240.0f, 60.0f, 70.0f, 25.0f);
 		logInBtn.tag = BUTTON_VALUE_ZERO;
 		[logInBtn setTitle:@"Login" forState:UIControlStateNormal];
-		[logInBtn addTarget:self action:@selector(clickByUser) forControlEvents:UIControlEventTouchUpInside];
+		[logInBtn addTarget:self action:@selector(clickByUser:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:logInBtn];
 	}
 //Show Date UIButton:
@@ -74,56 +75,50 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
--(void)clickByUser:(UIButton*)buttonInfo
-{
-	/*if (buttonInfo.tag == BUTTON_VALUE_ZERO)
-	{
-		buttonInfo.backgroundColor = [UIColor blackColor];
-		buttonInfo.tintColor = [UIColor whiteColor];
-		
-	}*/
-	usernameText = [userNameTextField text];
-	if (buttonInfo.tag == BUTTON_VALUE_ZERO)
-	{
-		if (usernameText == nil)
-		{
-			pleaseEnterUserName.text = @"Username cannot be empty";
-		} else
-		  {
-			textString = @"has been logged in";
-			pleaseEnterUserName.text = [NSString stringWithFormat:@"%@ %@ %@", userText.text, usernameText, textString];
-		//return;
-		  }
-	}
-	//loginTextVal = userNameTextField.text;
-	//NSLog((NSString*)loginTextVal);
-	
-	//userNameTitle = @"User:";
-	//textString = [userNameTitle stringByAppendingString:usernameText];
-	if (buttonInfo.tag == BUTTON_VALUE_ONE)
-	{
-		dateShow = [NSDate date];
-		formatDate = [[NSDateFormatter alloc]init];
-		if (formatDate != nil)
-		{
-			[formatDate setDateFormat:@"EEE yyyy.MM.dd"];
-			labeDateUI.text = [formatDate stringFromDate:dateShow];
-			[self displayAlert:dateShow displayAlert:formatDate];
-		} else
-		  {
-			textString = @"has been logged in";
-			pleaseEnterUserName.text = [NSString stringWithFormat:@"%@ %@ %@", userText.text, usernameText, textString];
-		  }
-	}
-}
--(void)displayAlert:info1 displayAlert:info2
-{
-	UIAlertView * dateAlert = [[UIAlertView alloc]initWithTitle:@"Date" message:info2	delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
-}
-- (void)didReceiveMemoryWarning
+-(void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)clickByUser:(UIButton*)buttonInfo
+{
+	switch (buttonInfo.tag)
+	{
+		case BUTTON_VALUE_ZERO:
+		{
+			usernameText = [userNameTextField text];
+			if (usernameText == nil)
+			{
+				pleaseEnterUserName.text = @"Username cannot be empty";
+			} else
+			  {
+				textString = @"has been logged in";
+				pleaseEnterUserName.text = [NSString stringWithFormat:@"%@ %@ %@", userText.text, usernameText, textString];
+			  }
+			  break;
+		}
+		case BUTTON_VALUE_ONE:
+		{
+			dateShow = [NSDate date];
+			formatDate = [[NSDateFormatter alloc]init];
+			if (formatDate != nil)
+			{
+				[formatDate setDateStyle:NSDateFormatterLongStyle];
+				[formatDate setTimeStyle:NSDateFormatterFullStyle];
+				labelDateString= [formatDate stringFromDate:dateShow];
+				if (labelDateString != nil)
+				{
+					dateAlert = [[UIAlertView alloc]initWithTitle:@"Date" message:labelDateString delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
+					[dateAlert show];
+				}
+			}
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
 }
 
 @end
