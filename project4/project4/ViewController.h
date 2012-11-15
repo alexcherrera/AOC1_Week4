@@ -28,4 +28,5 @@
 }
 //Functions:
 -(void)clickByUser;
+-(void)displayAlert:info1 displayAlert:info2;
 @end

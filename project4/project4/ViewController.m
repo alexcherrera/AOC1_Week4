@@ -108,12 +108,17 @@
 		{
 			[formatDate setDateFormat:@"EEE yyyy.MM.dd"];
 			labeDateUI.text = [formatDate stringFromDate:dateShow];
+			[self displayAlert:dateShow displayAlert:formatDate];
 		} else
 		  {
 			textString = @"has been logged in";
 			pleaseEnterUserName.text = [NSString stringWithFormat:@"%@ %@ %@", userText.text, usernameText, textString];
 		  }
 	}
+}
+-(void)displayAlert:info1 displayAlert:info2
+{
+	UIAlertView * dateAlert = [[UIAlertView alloc]initWithTitle:@"Date" message:info2	delegate:self cancelButtonTitle:@"ok" otherButtonTitles:nil];
 }
 - (void)didReceiveMemoryWarning
 {
