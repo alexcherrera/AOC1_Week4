@@ -15,21 +15,23 @@
 	UILabel * pleaseEnterUserName;
 	UILabel * userText;
 	UILabel * labelDateUI;
-	NSString * userNameTitle;
-	NSString * usernameText;
-	NSString * textString;
-	UITextField * userNameTextField;
+	UILabel * infoLabel;
 	UIButton * logInBtn;
 	UIButton * showDateBtn;
 	UIButton * infoButton;
+	UITextField * userNameInputTextField;
 	UITextField * loginTextVal;
+	UIAlertView * dateAlert;
+	NSString * userNameTitle;
+	NSString * usernameText;
+	NSString * textString;
+	NSString * labelDateString;
+	NSString * stringInfoLabel;
 	NSDate * dateShow;
 	NSDateFormatter * formatDate;
-	UIAlertView * dateAlert;
-	NSString * labelDateString;
-	UILabel * infoLabel;
-	NSString * stringInfoLabel;
+	UITouch * noticedTap;
 }
 //Functions:
 -(void)clickByUser:(UIButton*)buttonInfo;
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 @end
